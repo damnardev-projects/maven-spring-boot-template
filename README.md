@@ -1,0 +1,1 @@
+# maven-spring-boot-template
