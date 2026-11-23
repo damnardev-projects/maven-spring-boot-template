@@ -1,6 +1,6 @@
-# Maven Template
+# Maven Spring Boot Template
 
-Ce projet Java peut servir de modèle pour un nouveau projet. Il utilise Maven pour gérer le cycle de vie du projet et les dépendances.
+Ce projet Java avec Spring Boot peut servir de modèle pour un nouveau projet. Il utilise Maven pour gérer le cycle de vie du projet et les dépendances.
 
 ## Structure du projet
 
@@ -8,7 +8,7 @@ Ci-dessous, vous trouverez des informations sur les fichiers et répertoires imp
 
 Le fichier `pom.xml` racine liste les modules, configure SonarQube et JaCoCo.
 
-Le module `maven-template-dependencies` centralise les versions des dépendances et des plugins.
+Le module `maven-template-dependencies` centralise les versions des dépendances, comme Spring Boot, et des plugins.
 
 Le module `maven-template-parent` configure la version de Java et l'encodage, et hérite de `maven-template-dependencies`.
 
@@ -29,7 +29,7 @@ Une fois le projet cloné, exécutez la commande `./mvnw clean verify` pour tél
 - `./mvnw test` : exécute les tests unitaires
 - `./mvnw verify` : exécute les tests et génère un rapport de couverture dans `maven-template-tests/target/site/jacoco-aggregate`
 - `./mvnw install` : installe le projet dans le dépôt local Maven
-- `./mvnw exec:java -pl maven-template-cli` : exécute l'application en ligne de commande
+- `./mvnw spring-boot:run -pl maven-template-cli` : exécute l'application en ligne de commande
 - `./mvnw versions:display-dependency-updates` : liste les mises à jour disponibles des dépendances
 - `./mvnw versions:display-plugin-updates` : liste les mises à jour disponibles des plugins
 

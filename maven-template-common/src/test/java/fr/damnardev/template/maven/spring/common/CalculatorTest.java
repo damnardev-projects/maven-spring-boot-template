@@ -1,34 +1,19 @@
-package fr.damnardev.template.maven.common;
-
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Modifier;
+package fr.damnardev.template.maven.spring.common;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+@SpringBootTest(classes = Calculator.class)
 class CalculatorTest {
 
-	@Test
-	@DisplayName("constructor should be private")
-	void constructor_shouldBePrivate() throws Exception {
-		Constructor<Calculator> ctor = Calculator.class.getDeclaredConstructor();
-		assertThat(Modifier.isPrivate(ctor.getModifiers())).isTrue();
-	}
-
-	@Test
-	@DisplayName("constructor should throw IllegalStateException when instantiated")
-	void constructor_shouldThrowIllegalStateException_whenInstantiated() throws Exception {
-		Constructor<Calculator> ctor = Calculator.class.getDeclaredConstructor();
-		ctor.setAccessible(true);
-
-		assertThatThrownBy(ctor::newInstance)
-				.cause()
-				.isInstanceOf(IllegalStateException.class)
-				.hasMessage("Utility class - no instances allowed");
-	}
+	@Autowired
+	private Calculator calculator;
 
 	@Test
 	@DisplayName("add should return the sum of two integers")
@@ -39,7 +24,7 @@ class CalculatorTest {
 		int expectedSum = 5;
 
 		// When
-		int result = Calculator.add(firstNumber, secondNumber);
+		int result = this.calculator.add(firstNumber, secondNumber);
 
 		// Then
 		assertThat(result).isEqualTo(expectedSum);
@@ -54,7 +39,7 @@ class CalculatorTest {
 		int expectedDifference = 2;
 
 		// When
-		int result = Calculator.subtract(firstNumber, secondNumber);
+		int result = this.calculator.subtract(firstNumber, secondNumber);
 
 		// Then
 		assertThat(result).isEqualTo(expectedDifference);
@@ -69,7 +54,7 @@ class CalculatorTest {
 		int expectedProduct = 6;
 
 		// When
-		int result = Calculator.multiply(firstNumber, secondNumber);
+		int result = this.calculator.multiply(firstNumber, secondNumber);
 
 		// Then
 		assertThat(result).isEqualTo(expectedProduct);
@@ -84,7 +69,7 @@ class CalculatorTest {
 		int expectedQuotient = 2;
 
 		// When
-		int result = Calculator.divide(dividend, divisor);
+		int result = this.calculator.divide(dividend, divisor);
 
 		// Then
 		assertThat(result).isEqualTo(expectedQuotient);
@@ -99,7 +84,7 @@ class CalculatorTest {
 		String expectedMessage = "Division by zero is not allowed";
 
 		// When & Then
-		assertThatThrownBy(() -> Calculator.divide(dividend, divisor))
+		assertThatThrownBy(() -> this.calculator.divide(dividend, divisor))
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessage(expectedMessage);
 	}
