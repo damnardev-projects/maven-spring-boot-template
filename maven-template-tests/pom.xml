@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>fr.damnardev.template.maven</groupId>
+		<groupId>fr.damnardev.template.maven.spring</groupId>
 		<artifactId>maven-template-parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 		<relativePath>../maven-template-parent/pom.xml</relativePath>
@@ -14,8 +14,8 @@
 	<artifactId>maven-template-tests</artifactId>
 	<packaging>pom</packaging>
 
-	<name>Maven Template - Tests</name>
-	<description>Integration and aggregate tests for the Maven template</description>
+	<name>Maven Spring Boot Template - Tests</name>
+	<description>Integration and aggregate tests for the Maven Spring Boot template</description>
 
 	<properties>
 		<maven.install.skip>true</maven.install.skip>
@@ -24,11 +24,11 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>fr.damnardev.template.maven</groupId>
+			<groupId>fr.damnardev.template.maven.spring</groupId>
 			<artifactId>maven-template-common</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>fr.damnardev.template.maven</groupId>
+			<groupId>fr.damnardev.template.maven.spring</groupId>
 			<artifactId>maven-template-cli</artifactId>
 		</dependency>
 	</dependencies>
